@@ -1,12 +1,38 @@
 {
   "name": "random-philosopher",
-  "version": "1.1.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "AMIR SHAHZAD HASHMI",
+  "version": "2.0.0",
+  "description": "Random philosophers with intros, dates, eras, schools, major works and quotes. Filter by era or tradition, seed the randomness, or use the CLI.",
+  "keywords": ["philosophy", "philosopher", "random", "quotes", "quote", "generator", "history", "stoicism", "existentialism", "cli", "placeholder-data"],
   "license": "MIT",
-  "description": "A package to generate random philosophers' names with a short introduction"
+  "author": "Amir Shahzad Hashmi",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirshahzadhashmi7145/random-philosopher.git"
+  },
+  "bugs": { "url": "https://github.com/amirshahzadhashmi7145/random-philosopher/issues" },
+  "homepage": "https://github.com/amirshahzadhashmi7145/random-philosopher#readme",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+      "require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }
+    }
+  },
+  "bin": { "random-philosopher": "dist/cli.js" },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "test": "tsc --noEmit && node --test test/*.test.mjs",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.6.0"
+  }
 }
